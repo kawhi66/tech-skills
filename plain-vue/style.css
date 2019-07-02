@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.app {
+  background-color: #fafafa;
+  height: 100%;
+  padding: 10px;
+}
+
+.wrapper {
+  width: 100%;
+  height: 320px;
+  padding: 0 1em;
+  overflow: auto;
+  list-style: none;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  line-height: 32px;
+}
+
+#username {
+  outline: none;
+  border: none;
+  border-bottom: 1px dotted #999;
+  background-color: transparent;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
