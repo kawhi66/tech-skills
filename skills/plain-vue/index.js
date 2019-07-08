@@ -1,6 +1,6 @@
 import axios from "axios"
 import Vue from "vue/dist/vue.js" // compiler-included
-import "./style.css"
+import "../../public/style.css"
 
 Vue.config.productionTip = false
 
@@ -8,7 +8,7 @@ new Vue({
     el: "#app",
     template: `
         <article class="app">
-            <h2 style="line-height: 1.5">Try Me!</h2>
+            <h1>Plain Vue</h1>
             <form class="mt20">
                 <label for="username">Show Github repositories by @</label>
                 <input id="username" v-model="name" type="text" placeholder="kawhi66">

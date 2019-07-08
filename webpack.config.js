@@ -4,8 +4,11 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const argv = require('minimist')(process.argv.slice(2));
+console.log(argv.type);
+
 module.exports = {
-    entry: './index.js',
+    entry: `./skills/${argv.type}/index.js`,
     context: path.resolve(__dirname),
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -31,7 +34,7 @@ module.exports = {
         port: 5000
     },
     plugins: [
-        new HtmlWebpackPlugin({ template: 'index.html' }),
+        new HtmlWebpackPlugin({ template: './public/index.html' }),
         new webpack.HotModuleReplacementPlugin()
     ]
 };
