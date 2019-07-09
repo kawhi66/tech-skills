@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>jQuery</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      .app {
+        background-color: #fafafa;
+        height: 100%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .wrapper {
+        width: 100%;
+        height: 320px;
+        padding: 0 1em;
+        flex-grow: 1;
+        overflow: auto;
+        list-style: none;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        line-height: 32px;
+      }
+
+      #username {
+        outline: none;
+        border: none;
+        border-bottom: 1px dotted #999;
+        background-color: transparent;
+      }
+
+      .mt20 {
+        margin-top: 20px;
+      }
+
+      .mb20 {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <article class="app">
+      <h1>jQuery</h1>
+      <form class="mt20">
+        <label for="username">Show Github repositories by @</label>
+        <input
+          id="username"
+          type="text"
+          placeholder="kawhi66"
+          value="kawhi66"
+        />
+      </form>
+      <ul class="wrapper mt20"></ul>
+    </article>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      $(function() {
+        const name = $("#username").val();
+        const ul = $('<ul class="wrapper mt20"></ul>');
+        $.ajax({
+          url: `https://api.github.com/users/${name}/repos`,
+          data: {
+            type: "all",
+            sort: "updated"
+          },
+          dataType: "json",
+          success(data, status, xhr) {
+            if (data && data.length) {
+              for (let index = 0; index < data.length; index++) {
+                const element = data[index];
+                ul.append(`<li> ${element.name} </li>`);
+              }
+            }
+            $("ul.wrapper").replaceWith(ul);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
